@@ -1,10 +1,23 @@
 import React from 'react';
-import './Header.css'
+// import './Header.css'
+
+const styles = {
+  minHeight: '60px',
+  backgroundColor: '#000',
+  color: '#fff',
+  textTransform: 'uppercase',
+  fontSize: '30px'
+}
+
+const title = {
+color: 'red'
+}
+
 
 const Header = () => {
   return (
-    <header className='header'>
-     Header our Shop
+    <header style={styles} >
+     <h1 style={title}>Header our Shop</h1>
     </header>
   );
 };
