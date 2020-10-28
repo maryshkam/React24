@@ -17,7 +17,7 @@ const CardItem = ({img,shipping, title, price, currency,type}) => {
         <p className="card-item__title">{title}</p>
         <div className="card-item__price">
           <div className="val">
-            {currency} {price + 10}
+            {currency} {price}
           </div>
         </div>
         <div className={type}>Add to cart</div>
