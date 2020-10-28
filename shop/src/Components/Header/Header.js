@@ -1,16 +1,16 @@
 import React from 'react';
-// import './Header.css'
+import './Header.css'
 
 const styles = {
   minHeight: '60px',
   backgroundColor: '#000',
-  color: '#fff',
   textTransform: 'uppercase',
-  fontSize: '30px'
+  fontSize: '30px',
+  padding: '20px',
 }
 
 const title = {
-color: 'red'
+color: '#fff'
 }
 
 

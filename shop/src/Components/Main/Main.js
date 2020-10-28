@@ -5,10 +5,10 @@ import Filter from '../Filter/Filter';
 
 const Main = () => {
   return (
-    <>
+    <main>
     <Filter />
     <CardCollection />
-    </>
+    </main>
   );
 };
 

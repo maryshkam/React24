@@ -1,25 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card} from './CardItem.styled'
+import {Card,CardThumb, CardBtn, CardItemTitle, CardPrice} from './CardItem.styled'
 
 const CardItem = ({img,shipping, title, price, currency,type}) => {
   return (
     <Card>
     {/* <div className="card-item"> */}
       {shipping && <div className="card-stopper">Free shipping</div>}
-        
-        <div className="card-item__thumb">
+      <CardThumb  >
           <img
             src={img}
-            // alt={product.style}
+            alt={title}
           />
-        </div>
-        <p className="card-item__title">{title}</p>
-        <div className="card-item__price">
+        </CardThumb>
+        <CardItemTitle>{title}</CardItemTitle>
+       <CardPrice>
+        
           <div className="val">
             {currency} {price}
           </div>
-        </div>
+          </CardPrice>
         <div className={type}>Add to cart</div>
       {/* </div> */}
       </Card>
