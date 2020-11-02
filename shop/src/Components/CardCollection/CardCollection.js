@@ -9,7 +9,7 @@ const CardCollection = ({products,addToCart}) => {
       {/* <!-- cards header start --> */}
       <div className="card-container__header">
         <small className="products-found">
-          <span>{products.length} Product(s) found</span>
+          <span>16 Product(s) found</span>
         </small>
         <div className="sort">
           Order by
