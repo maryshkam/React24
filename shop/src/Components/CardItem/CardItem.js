@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Card,CardThumb, CardBtn, CardItemTitle, CardPrice} from './CardItem.styled'
 
-const CardItem = ({img,shipping, title, price, currency,type}) => {
+const CardItem = ({img,shipping, title, price, currency,type,id,addToCart}) => {
+  
   return (
     <Card>
     {/* <div className="card-item"> */}
@@ -20,7 +21,7 @@ const CardItem = ({img,shipping, title, price, currency,type}) => {
             {currency} {price}
           </div>
           </CardPrice>
-        <div className={type}>Add to cart</div>
+        <div className={type} onClick={()=> addToCart(id)}>Add to cart</div>
       {/* </div> */}
       </Card>
   );

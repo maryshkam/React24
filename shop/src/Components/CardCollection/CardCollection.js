@@ -1,9 +1,9 @@
 import React from 'react';
-import products from '../../db/product.json';
+// import products from '../../db/product.json';
 import CardItem from '../CardItem/CardItem';
 import './CardCollection.css';
 
-const CardCollection = () => {
+const CardCollection = ({products,addToCart}) => {
   return (
     <div className="card-container">
       {/* <!-- cards header start --> */}
@@ -23,12 +23,15 @@ const CardCollection = () => {
       {/* <!-- cards header end  --> */}
       {/* <!-- card start  --> */}
       {products.map(product=><CardItem 
-      key={product.id}   
+      key={product.id}  
+      id={product.id} 
       img={product.img}
       shipping={product.isFreeShipping} 
       title={product.title} 
       price={product.price} 
-      currency={product.currencyFormat} />
+      currency={product.currencyFormat} 
+      addToCart={addToCart}
+      />
     
     )}
       </div>

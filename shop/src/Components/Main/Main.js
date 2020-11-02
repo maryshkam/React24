@@ -3,11 +3,11 @@ import CardCollection from '../CardCollection/CardCollection';
 import Filter from '../Filter/Filter';
 
 
-const Main = () => {
+const Main = ({products,addToCart}) => {
   return (
     <main>
     <Filter />
-    <CardCollection />
+    <CardCollection products={products} addToCart={addToCart}/>
     </main>
   );
 };
