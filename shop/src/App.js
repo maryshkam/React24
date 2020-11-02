@@ -14,10 +14,26 @@ class App extends Component {
   addToCart = (id)=>{
     const productOrder=this.state.order.find(product=>product.id === id)
     const item = this.state.products.find(product=>product.id === id);
-if(this.state.products.find(product=>product.id === id))
-    this.setState((prev)=>({
-      order: [...prev.order,item]
-    }))
+if(productOrder) {
+  this.setState(prev=>({
+    order: prev.order.map(orderItem => (orderItem.id===id ? {...orderItem, count: orderItem.count +1} : orderItem))
+  }))
+} else {
+  item.count = 1
+  this.setState((prev)=>({
+    order: [...prev.order,item]
+  }))
+}  
+  }
+
+  removeFromCart=(id)=>{
+    // const result = this.state.order.filter(orderItem=>orderItem.id !==id );
+    // this.setState({
+    //   order:result
+    // })
+this.setState((prev)=>({
+  order: prev.order.filter(orderItem=>orderItem.id!==id)
+}))
   }
 
   switchCart =()=>{
@@ -32,7 +48,7 @@ if(this.state.products.find(product=>product.id === id))
       <>
       <Header />
       <Main products={products} addToCart={this.addToCart}/>
-      <Cart cartStatus={isCartOpen} switchCart={this.switchCart} order={order} />
+      <Cart cartStatus={isCartOpen} switchCart={this.switchCart} order={order} removeFromCart={this.removeFromCart}/>
      
       </>
     );

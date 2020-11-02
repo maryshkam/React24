@@ -1,24 +1,24 @@
 import React from "react";
 import "./CartItem.css";
-const CartItem = () => {
+const CartItem = ({title,count,price,currencyFormat,img,id,removeFromCart}) => {
   return (
     <div class="cart-item">
-    <div class="cart-item__del"></div>
+    <div onClick={()=>removeFromCart(id)} class="cart-item__del"></div>
     <div class="cart-item__thumb">
       <img
-        src="https://i.ibb.co/YfKsBj0/8552515751438644-1.jpg"
+        src={img}
         alt="Skuul"
       />
     </div>
     <div class="cart-item__details">
-      <p class="title">Skuul</p>
+      <p class="title">{title}</p>
       <p class="desc">
         Black T-Shirt with front print
       </p>
-      <p class="desc">Quantity: 1</p>
+      <p class="desc">Quantity: {count}</p>
     </div>
     <div class="cart-item__price">
-      <p>$ 14.00</p>
+      <p>{currencyFormat} {(count*price).toFixed(2)}</p>
       <button disabled="" class="change-product-button">-</button
       ><button class="change-product-button">+</button>
     </div>
