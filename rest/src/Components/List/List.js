@@ -14,7 +14,7 @@ class List extends Component {
   }
   
   async componentDidMount(){
-  const url = withCredentials('https://api.github.com/search/repositories?q=react&');
+  const url = withCredentials('https://api.github.com/search/users?q=react&');
   try {
     const result = await request('get',url);
     this.setState({
