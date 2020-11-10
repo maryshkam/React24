@@ -11,10 +11,7 @@ const Form = ({updateUsers,loaderToogle,errorToogle}) => {
     setSearch(value)
   }
 
-  const selectHeandler=({target})=>{
-const {value}=target;
-setType(value)
-  }
+  
   const onSubmit= async (e)=>{
     e.preventDefault();
     const url=withCredentials(`https://api.github.com/search/${type}?q=${search}&page=22&per_page=2&`)
@@ -41,11 +38,7 @@ setType(value)
   return (
     <div>
       <form onSubmit={onSubmit} className='form'> 
-        <input onChange={inputHeandler} type='text' name='search' value={search}></input>
-        <select onChange={selectHeandler} name='type' value={type}> 
-          <option value='users'>users</option>
-          <option value='repositories'>repositories</option>
-        </select>
+        <input onChange={inputHeandler}  type='text' name='search' value={search}></input>
         <button>Search</button>
       </form>
     </div>
