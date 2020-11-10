@@ -15,12 +15,9 @@ function App() {
      <Header/>
      <Switch>
       <Route exact path="/" component={Home}></Route>
-      
       <Route exact path="/user" component={User}></Route>
-      <Route path='/user/:name' component={SingleUser}></Route>
-      
-      <Route exact path="/repos" component={Repos}></Route>
-      
+      <Route path='/user/:name' component={SingleUser}></Route>  
+      <Route exact path="/repos" component={Repos}></Route>   
     <Redirect to='/'></Redirect>
      </Switch>
     </div>

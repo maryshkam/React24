@@ -9,3 +9,7 @@ export const request= async (method,url,body=null)=>{
   return result.data
 
 }
+
+export const createSingleUserUrl=(login)=>{
+ return withCredentials(`https://api.github.com/users/${login}?`)
+}

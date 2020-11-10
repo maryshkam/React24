@@ -1,43 +1,24 @@
-import React,{useState} from 'react';
+import React,{useState,} from 'react';
+import {useHistory,useLocation,useParams,useRouteMatch} from 'react-router-dom';
 import {withCredentials,request} from '../../helpers/request'
 import './Form.css'
 
-const Form = ({updateUsers,loaderToogle,errorToogle}) => {
-  const [search,setSearch]=useState('');
-  const [type,setType]=useState('users')
+const Form = ({search,inputHeandler,getUsers,resetForm}) => {
+const history=useHistory();
+const location=useLocation();
+console.log(history);
 
-  const inputHeandler =({target})=>{
-    const {value}=target;
-    setSearch(value)
-  }
-
-  
-  const onSubmit= async (e)=>{
+  const submitHeandler=(e)=>{
     e.preventDefault();
-    const url=withCredentials(`https://api.github.com/search/${type}?q=${search}&page=22&per_page=2&`)
-    try {
-    await loaderToogle()
-    await errorToogle(false)
-    const result = await request('get',url);
-    console.log(result);
-    updateUsers(result.items);
-    
-      
-    } catch (error) {
-      console.log(error.message);
-      errorToogle(true)
-    }finally{
-      loaderToogle();
-      setSearch('');
-      // setType('')
-
-    }
-    
+    getUsers(search);
+    resetForm();
+    history.push({...location, search: `?userName=${search}`})
+    console.log(location);
   }
-
+  
   return (
     <div>
-      <form onSubmit={onSubmit} className='form'> 
+      <form onSubmit={submitHeandler}  className='form'> 
         <input onChange={inputHeandler}  type='text' name='search' value={search}></input>
         <button>Search</button>
       </form>

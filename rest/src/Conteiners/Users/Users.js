@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Form from '../../Components/Form/Form';
 import List from '../../Components/List/List';
 import Loader from 'react-loader-spinner';
-import {withCredentials,request} from '../../helpers/request'
+import {withCredentials,request} from '../../helpers/request';
+import queryString from 'query-string'
 
 
 class Users extends Component {
@@ -16,7 +17,16 @@ class Users extends Component {
   }
 
   componentDidMount(){
-    this.getUsers();
+    const {location}=this.props
+    const params = queryString.parse(location.search);
+    if(Object.keys(params).length) {
+      this.getUsers(params.userName)
+    } else {
+      this.getUsers();
+    }
+    
+    
+    
   }
 
   getUsers = async (search='react')=>{
@@ -47,8 +57,19 @@ class Users extends Component {
     this.setState({users})
   }
 
+  inputHeandler=({target})=>{
+    const {value}=target;
+    this.setState({
+      search:value
+    })
+  }
+  resetForm=()=>{
+    this.setState({
+      search:''
+    })
+  }
+
   render() {
-    console.log(this.props);
     const {loader,error,users,search}=this.state
     return (
       <div>
@@ -58,7 +79,7 @@ class Users extends Component {
          width={100}
 />}
 {!loader && !error && <>
-        <Form/>
+        <Form search={search} inputHeandler={this.inputHeandler} getUsers={this.getUsers} resetForm={this.resetForm} />
         <List users={users}/></>}
         {error && <h1>Something went wrong, try later</h1>}
         
