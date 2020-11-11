@@ -5,7 +5,7 @@ import './ListItem.css'
 const ListItem = ({avatar_url, login, type, name, owner}) => {
   const history = useHistory();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const redirectToUserPage = () => {
     history.push(`/user/${login}`);
   };

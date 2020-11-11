@@ -6,14 +6,14 @@ import './Form.css'
 const Form = ({search,inputHeandler,getUsers,resetForm}) => {
 const history=useHistory();
 const location=useLocation();
-console.log(history);
+// console.log(history);
 
   const submitHeandler=(e)=>{
     e.preventDefault();
     getUsers(search);
     resetForm();
     history.push({...location, search: `?userName=${search}`})
-    console.log(location);
+    // console.log(location);
   }
   
   return (
