@@ -70,6 +70,8 @@ class Users extends Component {
   }
 
   render() {
+    const {match,location,history}=this.props
+    console.log(this.props);
     const {loader,error,users,search}=this.state
     return (
       <div>
@@ -80,7 +82,7 @@ class Users extends Component {
 />}
 {!loader && !error && <>
         <Form search={search} inputHeandler={this.inputHeandler} getUsers={this.getUsers} resetForm={this.resetForm} />
-        <List users={users}/></>}
+        <List users={users}match={match} history={history}/></>}
         {error && <h1>Something went wrong, try later</h1>}
         
       </div>

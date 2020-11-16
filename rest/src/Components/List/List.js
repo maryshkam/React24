@@ -4,12 +4,12 @@ import ListItem from '../ListItem/ListItem';
 import './List.css'
 
 
-const List =({users})=> {
-console.log(users);
+const List =(props)=> {
+console.log(props);
     return (
     <>
       <div className='container'>
-      {users.map(card=><ListItem key={card.id} {...card}/>)}
+      {props.users.map(card=><ListItem key={card.id} {...card}/>)}
       </div>
       </>
     );
