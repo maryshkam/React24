@@ -1,7 +1,7 @@
-.link {
+header {
+  background-color: #4051b5;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
   color: #fff;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 20px;
-  font-size: 26px;
 }

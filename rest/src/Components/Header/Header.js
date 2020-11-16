@@ -1,31 +1,17 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import {NavLink, Link} from 'react-router-dom';
-import './Header.css'
+import './Header.css';
+import withAuth from '../../hoc/withAuth';
 
-const Header = () => {
+const Header = ({isAuth}) => {
+  console.log(isAuth);
   return (
     <div>
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <NavLink to="/"  className='link'>Home</NavLink>
-          <NavLink to="/user" className='link'>User</NavLink>
-          <NavLink to="/repos" className='link'>Repos</NavLink>
-          {/* <Typography variant="h6" color="inherit">
-            Home
-          </Typography>
-          <Typography variant="h6" color="inherit">
-            User
-          </Typography>
-          <Typography variant="h6" color="inherit">
-            Repos
-          </Typography> */}
-        </Toolbar>
-      </AppBar>
+      <header>
+        {isAuth ? <h1>Header</h1> : <h1>Chao</h1>} 
+        
+      </header>
     </div>
   );
 };
-
-export default Header;
+// export default Header;
+export default withAuth(Header);
