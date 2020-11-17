@@ -5,12 +5,8 @@ import withStorage from '../../hoc/withStorage'
 const TodoList = ({saveToStorage}) => {
   const [input,setInput]=useState('');
   const [tasks,setTasks]=useState([]);
-  const [alert, setAlert] = useState(false);
 
-  const toggleModal = () => {
-    setAlert((state) => !state);
-  };
-
+  
   const inputHeandler =(e)=>{
     const value = e.target.value;
     setInput(value);
