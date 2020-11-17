@@ -5,6 +5,11 @@ import withStorage from '../../hoc/withStorage'
 const TodoList = ({saveToStorage}) => {
   const [input,setInput]=useState('');
   const [tasks,setTasks]=useState([]);
+  const [alert, setAlert] = useState(false);
+
+  const toggleModal = () => {
+    setAlert((state) => !state);
+  };
 
   const inputHeandler =(e)=>{
     const value = e.target.value;
@@ -23,6 +28,10 @@ const TodoList = ({saveToStorage}) => {
     setInput('');
   }
 
+  const deleteTask = (id) => {
+    setTasks((state) => state.filter((el) => el.id !== id));
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}> 
@@ -36,5 +45,5 @@ const TodoList = ({saveToStorage}) => {
   );
 };
 
-export default TodoList;
-// export default withStorage(TodoList);
+// export default TodoList;
+export default withStorage(TodoList);
