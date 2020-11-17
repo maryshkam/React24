@@ -2,7 +2,7 @@ import React from 'react';
 import withToogle from '../../hoc/withToogle'
 
 const Card = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div>
       <h1>Card Title</h1>
