@@ -1,10 +1,16 @@
 import React,{useState} from 'react';
 import './TodoList.css';
-import withStorage from '../../hoc/withStorage'
+import withStorage from '../../hoc/withStorage';
+import {CSSTransition,TransitionGroup} from 'react-transition-group'
 
 const TodoList = ({saveToStorage}) => {
   const [input,setInput]=useState('');
   const [tasks,setTasks]=useState([]);
+  const [alert,setAlert]=useState(false);
+
+  const toggleModal=()=>{
+    setAlert(prev=>!prev)
+  }
 
   
   const inputHeandler =(e)=>{
@@ -34,9 +40,36 @@ const TodoList = ({saveToStorage}) => {
         <input onChange={inputHeandler} type='text' name='text' value={input}></input>
         <button type='submit'>Save</button>
       </form>
-      <ul>
-      {tasks.map(el=><li key={el.id}>{el.text}</li>)}
-      </ul>
+      
+
+      <TransitionGroup component="ul"  className="list">
+        {tasks.map((el) => (
+          <CSSTransition key={el.id} classNames="list__item" timeout={800}>
+            <li className="item" onClick={() => deleteTask(el.id)}>
+              {el.text}
+            </li>
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
+
+
+      <CSSTransition 
+      classNames='modal'
+      in={alert} 
+      timeout={{enter:500,exit:350}}
+      mountOnEnter
+      unmountOnExit
+      >
+      <div className='modal'>Alert</div>
+      </CSSTransition>
+
+      {/* {alert && (<CSSTransition>
+      <div className='modal'>Alert</div>
+      </CSSTransition>)} */}
+      
+
+      {/* {alert &&<div className='modal'>Alert</div>} */}
+      <button onClick={toggleModal}>Show Modal</button>
     </div>
   );
 };
