@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./TodoList.css";
-const TodoList = ({ saveToStorage }) => {
+const TodoList = ({}) => {
   const [input, setInput] = useState("");
   const [tasks, setTasks] = useState([]);
 
