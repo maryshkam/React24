@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import count from "./countReducer";
-
+import input from "./input";
+import todoList from "./todoList";
 const rootReducer = combineReducers({
-  counter: count,
+  input,
+  todoList,
 });
 
 export default rootReducer;

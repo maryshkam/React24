@@ -1,40 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { clearInput, editInput } from "../../redux/action/input";
+import { addItem } from "../../redux/action/todoList";
+import TodoItem from "../TodoItem/TodoItem";
 import "./TodoList.css";
-const TodoList = ({}) => {
-  const [input, setInput] = useState("");
-  const [tasks, setTasks] = useState([]);
+
+const TodoList = () => {
+  const value = useSelector((state) => state.input);
+  const tasks = useSelector((state) => state.todoList);
+  const dispatch = useDispatch();
 
   const inputHandler = (e) => {
-    const value = e.target.value;
-    setInput(value);
+    const text = e.target.value;
+    dispatch(editInput(text));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const task = {
+    if (!value) {
+      return;
+    }
+    const todoItem = {
+      text: value,
       id: Date.now(),
-      text: input,
     };
-    const newState = [...tasks, task];
-    setTasks(newState);
-    setInput("");
-  };
+    dispatch(addItem(todoItem));
+    dispatch(clearInput());
 
-  const deleteTask = (id) => {
-    setTasks((state) => state.filter((el) => el.id !== id));
+    // if (value === "") {
+    //   return;
+    // }
+
+    // if (value) {
+    //   const todoItem = {
+    //     text: value,
+    //     id: Date.now(),
+    //   };
+    //   dispatch(addItem(todoItem));
+    //   dispatch(clearInput());
+    // }
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="text" onChange={inputHandler} value={input} />
+        <input type="text" onChange={inputHandler} value={value} />
         <button>Save</button>
       </form>
       <ul className="list">
         {tasks.map((el) => (
-          <li className="item" onClick={() => deleteTask(el.id)} key={el.id}>
-            {el.text}
-          </li>
+          <TodoItem key={el.id} {...el} />
         ))}
       </ul>
     </div>
