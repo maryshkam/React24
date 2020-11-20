@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editInput, clearInput } from "../../redux/toolkit/action/inputToolkit";
-import { addItem } from "../../redux/action/todoList";
+import { editInput, clearInput } from "../../redux/slice/inputSlice";
+import { addItem } from "../../redux/slice/todoListSlice";
 import TodoItem from "../TodoItem/TodoItem";
 import "./TodoList.css";
 
 const TodoList = () => {
   const value = useSelector((state) => state.input);
-  const tasks = useSelector((state) => state.todoList);
+  const tasks = useSelector((state) => state.todo);
   const dispatch = useDispatch();
 
   const inputHandler = (e) => {
@@ -48,7 +48,7 @@ const TodoList = () => {
         <button>Save</button>
       </form>
       <ul className="list">
-        {[].map((el) => (
+        {tasks.map((el) => (
           <TodoItem key={el.id} {...el} />
         ))}
       </ul>

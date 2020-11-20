@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteItem } from "../../redux/action/todoList";
+import { deleteItem } from "../../redux/slice/todoListSlice";
 
 const TodoItem = ({ id, text }) => {
   const dispatch = useDispatch();
