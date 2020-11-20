@@ -1,9 +1,7 @@
 import { combineReducers } from "redux";
-import input from "./input";
-import todoList from "./todoList";
+import inputToolkit from "./inputToolkit";
 const rootReducer = combineReducers({
-  input,
-  todoList,
+  input: inputToolkit,
 });
 
 export default rootReducer;

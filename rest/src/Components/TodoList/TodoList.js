@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { clearInput, editInput } from "../../redux/action/input";
+import { editInput, clearInput } from "../../redux/toolkit/action/inputToolkit";
 import { addItem } from "../../redux/action/todoList";
 import TodoItem from "../TodoItem/TodoItem";
 import "./TodoList.css";
@@ -48,7 +48,7 @@ const TodoList = () => {
         <button>Save</button>
       </form>
       <ul className="list">
-        {tasks.map((el) => (
+        {[].map((el) => (
           <TodoItem key={el.id} {...el} />
         ))}
       </ul>
