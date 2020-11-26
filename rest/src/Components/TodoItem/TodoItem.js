@@ -1,14 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteItem,editTask } from "../../redux/action/todoList";
-import {deleteTaskOperation} from '../../redux/operations/taskOperations'
+import {deleteTaskOperation,deleteDataFromFireStore} from '../../redux/operations/taskOperations'
 
 const TodoItem = ({ id, text,status }) => {
   const dispatch = useDispatch();
 
   const deleteHandler = () => {
     
-    dispatch(deleteTaskOperation(id))
+    dispatch(deleteDataFromFireStore("tasks",id))
     dispatch(deleteItem(id));
   };
 
