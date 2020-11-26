@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, SET_TASK } from "../constant";
+import { ADD_ITEM,EDIT_ITEM, DELETE_ITEM, SET_TASK } from "../constant";
 
 export const addItem = (todoItem) => ({
   type: ADD_ITEM,
@@ -7,6 +7,11 @@ export const addItem = (todoItem) => ({
 
 export const deleteItem = (id) => ({
   type: DELETE_ITEM,
+  payload: id,
+});
+
+export const editTask = (id) => ({
+  type: EDIT_ITEM,
   payload: id,
 });
 

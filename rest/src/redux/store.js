@@ -5,7 +5,7 @@ import logger from 'redux-logger';
 import {ownLogger} from './logger';
 import thunk from 'redux-thunk';
 
-const middleWares=[ownLogger,thunk];
+const middleWares=[thunk];
 
 const rootMiddleWares=applyMiddleware(...middleWares);
 const compose = composeWithDevTools(rootMiddleWares)

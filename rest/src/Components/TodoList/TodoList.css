@@ -44,6 +44,10 @@ transition: opacity 350ms ease-in-out;
   margin-bottom: 20px;
 }
 
+.item__complete {
+  background-color: red;
+}
+
 .item:last-child {
   margin-bottom: 0;
 }
