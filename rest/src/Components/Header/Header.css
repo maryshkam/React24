@@ -1,0 +1,24 @@
+.header {
+  background-color: blue;
+ display: flex;
+ justify-content: center;
+}
+
+.nav {
+display: flex;
+justify-content: center;
+padding: 20px;
+max-width: 500px;
+}
+
+.nav__link {
+color: #fff;
+text-decoration: none;
+font-size: 25px;
+font-weight: 700;
+margin: 20px;
+}
+
+ .button {
+  /* width: 150px; */
+}
